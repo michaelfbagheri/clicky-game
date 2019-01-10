@@ -1,0 +1,13 @@
+.mynav {
+    background-color: blue;
+    border: solid 5px black;
+    width: 100%;
+    height: 150px;
+    margin: 0;
+}
+.navsections{
+    text-align: center;
+    margin: 20px 0 0 0;
+    font-size: 50px;
+    font-weight: bolder;
+}

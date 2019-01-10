@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
+import Nav from "./components/Nav/Nav";
 import friends from "./friends.json";
 import "./App.css";
+
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
@@ -11,7 +13,9 @@ class App extends Component {
 
   state = {
     friends,
-    lastChoice: 1
+    lastChoice: 1,
+    score: 0,
+    win: ""
   };
 
   // componentDidMount() {
@@ -46,21 +50,23 @@ class App extends Component {
 
 
   shuffleFriends = id => {
-    if (id === this.state.lastChoice) {
-      console.log('you lose')
-    } else {
-      console.log('you win')
-    }
-    console.log(id)
+
     var newState = { ...this.state };
     // Filter this.state.friends for friends with an id not equal to the id being removed
     newState.friends = this.shufflArray(newState.friends)
-
+    if (id === this.state.lastChoice) {
+      newState.win = "Lose!";
+    } else {
+      console.log(newState.score++);
+      newState.win = "Win!";
+    }
     // const friends = this.state.friends.filter(friend => friend.id !== id);
     // Set this.state.friends equal to the new friends array
     this.setState({
       friends,
-      lastChoice: id
+      lastChoice: id,
+      score: newState.score,
+      win: newState.win
     });
   };
 
@@ -68,7 +74,12 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>Friends List</Title>
+        <Nav
+          score={this.state.score}
+          winLoss={this.state.win} />
+        <Title
+          winLoss={this.state.win}>Clicky Game
+        </Title>
         {this.state.friends.map(friend => (
           <FriendCard
             shuffleFriends={this.shuffleFriends}
@@ -77,11 +88,6 @@ class App extends Component {
             image={friend.image}
           />
         ))}
-
-
-
-
-
       </Wrapper>
     );
   }
