@@ -2,11 +2,10 @@ import React from "react";
 import "./FriendCard.css";
 
 const FriendCard = props => (
-  <div className="card hoverable">
-    <div className="img-container ">
-      <img onClick={() => props.shuffleFriends(props.id)} className="remove hoverable" alt={props.name} src={props.image} />
+  <div className="card">
+    <div className="img-container hoverable">
+      <img onClick={() => props.shuffleFriends(props.id)} className="remove" alt={props.name} src={props.image} />
     </div>
-
   </div>
 
 );

@@ -9,10 +9,10 @@ const Nav = props => (
                 <a href="/">Clicky Game</a>
             </div>
             <div className="col-md-4 navsections">
-                Answer: {props.winLoss}
+                {props.winLoss}
             </div>
             <div className="col-md-4 navsections">
-                Score: {props.score}
+                Your Score: {props.score} | Top Score: {props.topScore}
             </div>
         </div>
     </nav>
