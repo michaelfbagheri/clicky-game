@@ -11,7 +11,7 @@ const Nav = props => (
             <div className="col-md-4 navsections">
                 {props.winLoss}
             </div>
-            <div className="col-md-4 navsections">
+            <div className="col-md-4 scoreboard">
                 Your Score: {props.score} | Top Score: {props.topScore}
             </div>
         </div>
