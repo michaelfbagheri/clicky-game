@@ -24,9 +24,15 @@ class App extends Component {
 
   //function will reutrn a re-shuffled array   
   shufflArray = (shuffledArray) => {
-    var ctr = shuffledArray.length, temp, index;
+    var ctr = shuffledArray.length, temp;
+    var index = 0;
     while (ctr > 0) {
-      index = Math.floor(Math.random() * ctr + 1);
+      while (index > 11) {
+        index = Math.floor(Math.random() * ctr + 1);
+        console.log("new Index assigned is " + index);
+      }
+
+
       ctr--;
       temp = shuffledArray[ctr];
       shuffledArray[ctr] = shuffledArray[index];
@@ -40,14 +46,16 @@ class App extends Component {
 
 
   shuffleFriends = id => {
-    var newState = { ...this.state };
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    newState.friends = this.shufflArray(newState.friends)
     if (id === this.state.lastChoice) {
       console.log('you lose')
     } else {
       console.log('you win')
     }
+    console.log(id)
+    var newState = { ...this.state };
+    // Filter this.state.friends for friends with an id not equal to the id being removed
+    newState.friends = this.shufflArray(newState.friends)
+
     // const friends = this.state.friends.filter(friend => friend.id !== id);
     // Set this.state.friends equal to the new friends array
     this.setState({
